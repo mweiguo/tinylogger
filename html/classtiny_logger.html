@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>tinyLogger类参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>组合类型列表</span></a></li>
+      <li><a href="functions.html"><span>组合类型成员</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>tinyLogger类参考</h1><!-- doxytag: class="tinyLogger" -->这是一个使用log的工具  
+<a href="#_details">更多...</a>
+<p>
+<code>#include &quot;<a class="el" href="tiny_log_8h-source.html">tinyLog.h</a>&quot;</code>
+<p>
+
+<p>
+<a href="classtiny_logger-members.html">所有成员的列表。</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>公有类型</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtiny_logger.html#24b37df654c96474896dee8c9126f203">LEVEL</a> { <br>
+&nbsp;&nbsp;<b>error</b> = 0, 
+<b>warning</b>, 
+<b>info</b>, 
+<b>debug</b>, 
+<br>
+&nbsp;&nbsp;<b>none</b>
+<br>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">枚举，所有可以使用的等级  <a href="classtiny_logger.html#24b37df654c96474896dee8c9126f203">更多...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>公有成员</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="454c3633d9715675dd84ab4e537f9c91"></a><!-- doxytag: member="tinyLogger::level" ref="454c3633d9715675dd84ab4e537f9c91" args="(LEVEL l)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtiny_logger.html#454c3633d9715675dd84ab4e537f9c91">level</a> (<a class="el" href="classtiny_logger.html#24b37df654c96474896dee8c9126f203">LEVEL</a> l)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定当前logger对象的 记录等级，高等级可以显示低等级的信息，反过来则不行 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtiny_logger.html#598baa51934bdf4ebc6f3b8542ca8f54">destination</a> (<a class="el" href="classtiny_logger.html#24b37df654c96474896dee8c9126f203">LEVEL</a> lev, const char *dest)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">设置输出设备  <a href="#598baa51934bdf4ebc6f3b8542ca8f54"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtiny_logger.html#0ef12332550a0064c4c84644a5e719c7">destination</a> (char *dest)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">设置输出设备  <a href="#0ef12332550a0064c4c84644a5e719c7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtiny_logger.html#4551d106207a79a596ade02540783a36">format</a> (char *str)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">指定格式化字符串，以后的信息都以此格式进行输出  <a href="#4551d106207a79a596ade02540783a36"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtiny_logger.html#1f5fdf8669fd40c7d715a6ab5979930b">log</a> (const char *fname, const char *filename, int lineno, <a class="el" href="classtiny_logger.html#24b37df654c96474896dee8c9126f203">LEVEL</a> l, bool showLevel, const char *format,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出一个消息  <a href="#1f5fdf8669fd40c7d715a6ab5979930b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtiny_logger.html#1e73baef6c5b4eb984925c60e034fb75">install_msgHandler</a> (LogMsgHandler fn)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">这个函数用来注册消息通知函数,当log运行的时候，此注册函数将会被调用  <a href="#1e73baef6c5b4eb984925c60e034fb75"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+这是一个使用log的工具 
+<p>
+具有如下功能<ul>
+<li>设置到不同的输出设备</li><li>改变日志的文本格式</li><li>提供日志等级自动过滤功能</li></ul>
+<p>
+<dl compact><dt><b><a class="el" href="todo.html#_todo000001">TODO:</a></b></dt><dd><ul>
+<li>如何在c/c++中自动生成函数参数名称和类型</li><li>提供状态式记录方式</li></ul>
+</dd></dl>
+<hr><h2>成员枚举类型文档</h2>
+<a class="anchor" name="24b37df654c96474896dee8c9126f203"></a><!-- doxytag: member="tinyLogger::LEVEL" ref="24b37df654c96474896dee8c9126f203" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classtiny_logger.html#24b37df654c96474896dee8c9126f203">tinyLogger::LEVEL</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+枚举，所有可以使用的等级 
+<p>
+{info, warning, error, none} 
+</div>
+</div><p>
+<hr><h2>成员函数文档</h2>
+<a class="anchor" name="598baa51934bdf4ebc6f3b8542ca8f54"></a><!-- doxytag: member="tinyLogger::destination" ref="598baa51934bdf4ebc6f3b8542ca8f54" args="(LEVEL lev, const char *dest)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinyLogger::destination           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classtiny_logger.html#24b37df654c96474896dee8c9126f203">LEVEL</a>&nbsp;</td>
+          <td class="paramname"> <em>lev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>dest</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+设置输出设备 
+<p>
+对指定的等级设定输出设备 <dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>lev</em>&nbsp;</td><td>LEVEL </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dest</em>&nbsp;</td><td>可以是 stdout, stderr, 分别代表标准输出，标准错误，其他字符串会被解释为文件名 </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="0ef12332550a0064c4c84644a5e719c7"></a><!-- doxytag: member="tinyLogger::destination" ref="0ef12332550a0064c4c84644a5e719c7" args="(char *dest)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinyLogger::destination           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>dest</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+设置输出设备 
+<p>
+对全部的等级设定为同样的输出设备 
+</div>
+</div><p>
+<a class="anchor" name="4551d106207a79a596ade02540783a36"></a><!-- doxytag: member="tinyLogger::format" ref="4551d106207a79a596ade02540783a36" args="(char *str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinyLogger::format           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>str</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+指定格式化字符串，以后的信息都以此格式进行输出 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>整数(keyword)，其中整数可以是正也可以是负，分别代表左右对齐，例：%25(asctime) 或 %-25(asctime)。 关键字可以是:<ul>
+<li>asctime 当前时间</li><li>filename 当前文件名</li><li>lineno 当前行号</li><li>funame 坐在函数名称 </li></ul>
+</td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="1f5fdf8669fd40c7d715a6ab5979930b"></a><!-- doxytag: member="tinyLogger::log" ref="1f5fdf8669fd40c7d715a6ab5979930b" args="(const char *fname, const char *filename, int lineno, LEVEL l, bool showLevel, const char *format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinyLogger::log           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>fname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>lineno</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classtiny_logger.html#24b37df654c96474896dee8c9126f203">tinyLogger::LEVEL</a>&nbsp;</td>
+          <td class="paramname"> <em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>showLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+输出一个消息 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fname</em>&nbsp;</td><td>当前要输出的消息所在的函数的名称 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>filename</em>&nbsp;</td><td>当前要输出的消息所在的文件的名称 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lineno</em>&nbsp;</td><td>当前要输出的消息所在的行号 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>l</em>&nbsp;</td><td>当前要输出的消息的等级 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>showLevel</em>&nbsp;</td><td>输出消息消息时是否需要显示等级，如[INFO], [WARNING]... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>消息输出的格式,与printf的语法格式一致 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>返回的函数执行代码，可以去调用 tinyLogger::error_message 函数来得到描述字符串 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="1e73baef6c5b4eb984925c60e034fb75"></a><!-- doxytag: member="tinyLogger::install_msgHandler" ref="1e73baef6c5b4eb984925c60e034fb75" args="(LogMsgHandler fn)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinyLogger::install_msgHandler           </td>
+          <td>(</td>
+          <td class="paramtype">LogMsgHandler&nbsp;</td>
+          <td class="paramname"> <em>fn</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+这个函数用来注册消息通知函数,当log运行的时候，此注册函数将会被调用 
+<p>
+fn的原型: typedef void (*LogMsgHandler)( const char* type, const char* msg ); type将会被设置成info, warning, error, debug 
+</div>
+</div><p>
+<hr>该类的文档由以下文件生成：<ul>
+<li>scr/<a class="el" href="tiny_log_8h-source.html">tinyLog.h</a><li>scr/tinyLog.cpp</ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Sep 25 10:51:55 2008 by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

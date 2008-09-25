@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>scr/tinyLog.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>scr/tinyLog.h文件参考</h1>这个文件包括 tinyLogger的定义 <a href="#_details">更多...</a>
+<p>
+<code>#include &lt;iostream&gt;</code><br>
+<code>#include &lt;fstream&gt;</code><br>
+<code>#include &lt;vector&gt;</code><br>
+<code>#include &lt;sstream&gt;</code><br>
+<code>#include &lt;iomanip&gt;</code><br>
+<code>#include &lt;time.h&gt;</code><br>
+<code>#include &lt;map&gt;</code><br>
+
+<p>
+<a href="tiny_log_8h-source.html">浏览该文件的源代码。</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>组合类型</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>FmtElement</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtiny_logger.html">tinyLogger</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">这是一个使用log的工具  <a href="classtiny_logger.html#_details">更多...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>宏定义</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="426397770ef12741b3ac5c19c543035a"></a><!-- doxytag: member="tinyLog.h::LOG_INFO" ref="426397770ef12741b3ac5c19c543035a" args="(t, x,...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>LOG_INFO</b>(t, x,...)&nbsp;&nbsp;&nbsp;t.log ( __FUNCTION__, __FILE__, __LINE__, tinyLogger::info,    true,  x, ##__VA_ARGS__ )</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="e667c2fe574fbedaecea427685a149bb"></a><!-- doxytag: member="tinyLog.h::LOG_WARNING" ref="e667c2fe574fbedaecea427685a149bb" args="(t, x,...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>LOG_WARNING</b>(t, x,...)&nbsp;&nbsp;&nbsp;t.log ( __FUNCTION__, __FILE__, __LINE__, tinyLogger::warning, true,  x, ##__VA_ARGS__ )</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="49a335d52262c41899448540c1dfcd5b"></a><!-- doxytag: member="tinyLog.h::LOG_ERROR" ref="49a335d52262c41899448540c1dfcd5b" args="(t, x,...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>LOG_ERROR</b>(t, x,...)&nbsp;&nbsp;&nbsp;t.log ( __FUNCTION__, __FILE__, __LINE__, tinyLogger::error,   true,  x, ##__VA_ARGS__ )</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b1c2bd284894c3bf4491926b040371f0"></a><!-- doxytag: member="tinyLog.h::LOG_DEBUG" ref="b1c2bd284894c3bf4491926b040371f0" args="(t, x,...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>LOG_DEBUG</b>(t, x,...)&nbsp;&nbsp;&nbsp;t.log ( __FUNCTION__, __FILE__, __LINE__, tinyLogger::debug,   true,  x, ##__VA_ARGS__ )</td></tr>
+
+<tr><td colspan="2"><br><h2>类型定义</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="7bafc79d34ee51da560677aa3c0ce906"></a><!-- doxytag: member="tinyLog.h::LogMsgHandler" ref="7bafc79d34ee51da560677aa3c0ce906" args=")(const char *type, const char *msg)" -->
+typedef void(*&nbsp;</td><td class="memItemRight" valign="bottom"><b>LogMsgHandler</b> )(const char *type, const char *msg)</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+这个文件包括 tinyLogger的定义 
+<p>
+tinyLogger是一个日志工具 <dl class="author" compact><dt><b>作者:</b></dt><dd><a href="mailto:mweiguo@gmail.com">mweiguo@gmail.com</a> </dd></dl>
+<dl class="date" compact><dt><b>日期:</b></dt><dd>2008.06 </dd></dl>
+<dl class="version" compact><dt><b>版本:</b></dt><dd>v0.1 </dd></dl>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Sep 25 10:51:55 2008 by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>
