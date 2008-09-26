@@ -3,9 +3,10 @@
 #include <cstdarg>
 // ========================================================================
 
-tinyLogger::tinyLogger () 
+tinyLog::tinyLog () 
 {
-    _level   = info;
+    _level       = info;
+    _showTitle   = false;
     destination ( "stdout" );
     format ( "%25(asctime)'%(filename)' : %(lineno) : %(funame)\t:\t" );
     _logMsgHandler = 0;
@@ -13,7 +14,7 @@ tinyLogger::tinyLogger ()
 
 // ========================================================================
 
-tinyLogger::~tinyLogger () 
+tinyLog::~tinyLog () 
 {
     std::map<std::string,std::ofstream*>::iterator end=_outf.end(), pp;
     for ( pp=_outf.begin(); pp!=end; ++pp ) {
@@ -24,7 +25,7 @@ tinyLogger::~tinyLogger ()
 
 // ========================================================================
 
-int tinyLogger::MatchKeyword ( char* p, FmtElement::KEYWORDTYPE& keyword )
+int tinyLog::MatchKeyword ( char* p, FmtElement::KEYWORDTYPE& keyword )
 {
     // none, levelno, levelname, pathname, filename, lineno, asctime
     if ( memcmp ( p, "levelno)",   8 ) == 0 ) {
@@ -54,7 +55,7 @@ int tinyLogger::MatchKeyword ( char* p, FmtElement::KEYWORDTYPE& keyword )
 
 // ========================================================================
 
-void tinyLogger::format ( char* str )
+void tinyLog::format ( char* str )
 {
     // clear first, means reformat
     _FmtManager.clear();
@@ -175,59 +176,61 @@ void tinyLogger::format ( char* str )
 
 // ========================================================================
 
-void tinyLogger::log ( const char* fname, const char* filename, int lineno, tinyLogger::LEVEL l, bool showLevel, const char* format, ... )
+void tinyLog::log ( const char* fname, const char* filename, int lineno, tinyLog::LEVEL l, const char* format, ... )
 {
     if ( !_out ) throw std::invalid_argument("invalid destination");
     if ( _level==none || l > _level )
         return;
 
-    char* szMsgTitle[] = {"[ERROR]","[WARNING]","[INFO]","[DEBUG]"};
-    (*_out[l]) << std::left << std::setw(12) << szMsgTitle[l];
+    if ( _showTitle ) {
+	char* szMsgTitle[] = {"[ERROR]","[WARNING]","[INFO]","[DEBUG]"};
+	(*_out[l]) << std::left << std::setw(12) << szMsgTitle[l];
 
-    for ( std::vector<FmtElement>::iterator pp=_FmtManager.begin(); pp!=_FmtManager.end(); ++pp ) { 
-        switch ( pp->Keyword ) {
-        case FmtElement::none:
-            (*_out[l]) << pp->ch;
-            break;
-        case FmtElement::levelno:
-            break;
-        case FmtElement::levelname:
-            break;
-        case FmtElement::pathname:
-            break;
-        case FmtElement::filename:
-            if ( pp->space != 32767 )   	   (*_out[l]) << std::setw(pp->space);
-            if ( pp->align == 0 )       	   (*_out[l]) << std::left;
-            else                        	   (*_out[l]) << std::right;
-            (*_out[l]) << filename;
-            break;
-        case FmtElement::lineno:
-            if ( pp->space != 32767 )   	   (*_out[l]) << std::setw(pp->space);
-            if ( pp->align == 0 )       	   (*_out[l]) << std::left;
-            else                        	   (*_out[l]) << std::right;
-            (*_out[l]) << lineno;
-            break;
-        case FmtElement::funame:
-            if ( pp->space != 32767 )   	   (*_out[l]) << std::setw(pp->space);
-            if ( pp->align == 0 )       	   (*_out[l]) << std::left;
-            else                        	   (*_out[l]) << std::right;
-            (*_out[l]) << fname;
-            break;
-        case FmtElement::asctime: 
-            {
-                if ( pp->space != 32767 )        (*_out[l]) << std::setw(pp->space);
-                if ( pp->align == 0 )            (*_out[l]) << std::left;
-                else                    	   (*_out[l]) << std::right;
-                time_t tm;
-                time ( &tm );
-                std::string stm = ctime ( &tm );
-                std::string::size_type pos;
-                if ( std::string::npos != (pos=stm.find_last_of ( '\n' )) )
-                    stm.replace ( pos, pos+1, "" );
-                (*_out[l]) << stm;
-            }
-            break;
-        }
+	for ( std::vector<FmtElement>::iterator pp=_FmtManager.begin(); pp!=_FmtManager.end(); ++pp ) { 
+	    switch ( pp->Keyword ) {
+	    case FmtElement::none:
+		(*_out[l]) << pp->ch;
+		break;
+	    case FmtElement::levelno:
+		break;
+	    case FmtElement::levelname:
+		break;
+	    case FmtElement::pathname:
+		break;
+	    case FmtElement::filename:
+		if ( pp->space != 32767 )   	   (*_out[l]) << std::setw(pp->space);
+		if ( pp->align == 0 )       	   (*_out[l]) << std::left;
+		else                        	   (*_out[l]) << std::right;
+		(*_out[l]) << filename;
+		break;
+	    case FmtElement::lineno:
+		if ( pp->space != 32767 )   	   (*_out[l]) << std::setw(pp->space);
+		if ( pp->align == 0 )       	   (*_out[l]) << std::left;
+		else                        	   (*_out[l]) << std::right;
+		(*_out[l]) << lineno;
+		break;
+	    case FmtElement::funame:
+		if ( pp->space != 32767 )   	   (*_out[l]) << std::setw(pp->space);
+		if ( pp->align == 0 )       	   (*_out[l]) << std::left;
+		else                        	   (*_out[l]) << std::right;
+		(*_out[l]) << fname;
+		break;
+	    case FmtElement::asctime: 
+		{
+		    if ( pp->space != 32767 )        (*_out[l]) << std::setw(pp->space);
+		    if ( pp->align == 0 )            (*_out[l]) << std::left;
+		    else                    	   (*_out[l]) << std::right;
+		    time_t tm;
+		    time ( &tm );
+		    std::string stm = ctime ( &tm );
+		    std::string::size_type pos;
+		    if ( std::string::npos != (pos=stm.find_last_of ( '\n' )) )
+			stm.replace ( pos, pos+1, "" );
+		    (*_out[l]) << stm;
+		}
+		break;
+	    }
+	}
     }
     char buffer[512] = {0};
     va_list vl;
@@ -249,7 +252,7 @@ void tinyLogger::log ( const char* fname, const char* filename, int lineno, tiny
 
 // ========================================================================
 
-void tinyLogger::destination ( LEVEL l, const char* dest )
+void tinyLog::destination ( LEVEL l, const char* dest )
 {
     if ( l == none )
         return;
