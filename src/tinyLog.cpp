@@ -1,6 +1,9 @@
 #include "tinyLog.h"
 #include <stdexcept>
 #include <cstdarg>
+#include <cstring>
+#include <cstdlib>
+
 // ========================================================================
 
 tinyLog::tinyLog () 
