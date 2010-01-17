@@ -1,2 +1,19 @@
-a : test.cpp tinyLog.cpp tinyLog.h
-	g++ test.cpp tinyLog.cpp -o a -Wall
+CPP  = g++.exe
+LINKOBJ  = tinylog.o $(RES)
+BIN  = tinylog.a
+CXXFLAGS =
+RM = rm -f
+
+.PHONY: all clean
+
+all: $(BIN)
+
+clean: clean-custom
+	${RM} $(LINKOBJ) $(BIN)
+
+$(BIN): $(LINKOBJ)
+	ar r $(BIN) $(LINKOBJ)
+	ranlib $(BIN)
+
+%.o: %.cpp
+	$(CPP) -c $< -o $@ $(CXXFLAGS)
