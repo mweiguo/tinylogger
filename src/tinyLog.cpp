@@ -240,7 +240,8 @@ void tinyLog::log ( const char* fname, const char* filename, int lineno, tinyLog
     va_start ( vl, format );
     vsprintf ( buffer, format, vl );
     va_end ( vl );
-    (*_out[l]) << buffer << std::endl;
+//     (*_out[l]) << buffer << std::endl;
+    (*_out[l]) << buffer;
 
     if ( _logMsgHandler ) {
         switch (l) {
