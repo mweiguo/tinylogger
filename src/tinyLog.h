@@ -40,13 +40,13 @@ public:
     void level ( LEVEL l ) { _level = l; }
     void show_title ( bool b ) { _showTitle = b; }
     void destination ( LEVEL lev, const char* dest );
-    void destination ( char* dest ) { 
+    void destination ( const char* dest ) { 
         destination(error,dest);
         destination(warning,dest);
         destination(info,dest);
         destination(debug,dest);
     }
-    void format ( char* str );
+    void format ( const char* str );
     void log ( const char* fname, const char* filename, int lineno, LEVEL l, const char* format, ... );
     void install_msgHandler ( LogMsgHandler fn ) { _logMsgHandler = fn; }
 protected:
@@ -55,7 +55,7 @@ protected:
 private:
     /** 匹配关键字，关键字包含(levelno, levelname, pathname, filename, lineno, asctime)，如果成功返回关键字的字节数，否则返回0 
      */
-    int MatchKeyword ( char* p, FmtElement::KEYWORDTYPE& keyword );
+    int MatchKeyword ( const char* p, FmtElement::KEYWORDTYPE& keyword );
 private:
     LogMsgHandler             _logMsgHandler;
     LEVEL                     _level;

@@ -28,7 +28,7 @@ tinyLog::~tinyLog ()
 
 // ========================================================================
 
-int tinyLog::MatchKeyword ( char* p, FmtElement::KEYWORDTYPE& keyword )
+int tinyLog::MatchKeyword ( const char* p, FmtElement::KEYWORDTYPE& keyword )
 {
     // none, levelno, levelname, pathname, filename, lineno, asctime
     if ( memcmp ( p, "levelno)",   8 ) == 0 ) {
@@ -58,7 +58,7 @@ int tinyLog::MatchKeyword ( char* p, FmtElement::KEYWORDTYPE& keyword )
 
 // ========================================================================
 
-void tinyLog::format ( char* str )
+void tinyLog::format ( const char* str )
 {
     // clear first, means reformat
     _FmtManager.clear();
@@ -68,7 +68,7 @@ void tinyLog::format ( char* str )
     int state = 0, align = 0, space = -1;
     std::stringstream ss;
     FmtElement::KEYWORDTYPE keyword = FmtElement::none;
-    for (  char* p=str; ; p++ ) {
+    for (  const char* p=str; ; p++ ) {
         switch ( state ) {
         case 0:
             if ( *p == '%' )         state = 1;
@@ -186,7 +186,7 @@ void tinyLog::log ( const char* fname, const char* filename, int lineno, tinyLog
         return;
 
     if ( _showTitle ) {
-	char* szMsgTitle[] = {"[ERROR]","[WARNING]","[INFO]","[DEBUG]"};
+	const char* szMsgTitle[] = {"[ERROR]","[WARNING]","[INFO]","[DEBUG]"};
 	(*_out[l]) << std::left << std::setw(12) << szMsgTitle[l];
 
 	for ( std::vector<FmtElement>::iterator pp=_FmtManager.begin(); pp!=_FmtManager.end(); ++pp ) { 
