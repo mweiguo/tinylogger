@@ -1,0 +1,7 @@
+tinylog is c++ loger
+features:
+ * custom output fomat
+ * support multi destination setting
+ * level filter
+ * builtin support filename, line number, function name, argument name & value
+ 
