@@ -2,7 +2,7 @@ CPP  = g++.exe
 LINKOBJ  = tinylog.o $(RES)
 BIN  = tinylog.a
 CXXFLAGS =
-RM = rm -f
+RM = rm -rf
 
 .PHONY: all clean
 
