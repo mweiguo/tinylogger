@@ -1,5 +1,5 @@
 #include "tinyLog.h"
-#include <windows.h>
+//#include <windows.h>
 
 int main(int argc, char* argv[])
 {
